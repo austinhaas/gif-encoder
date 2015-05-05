@@ -6,17 +6,19 @@ A minimal Clojure library for encoding gifs.
 
 ### Notes
 
-This is a low-level implementation of the GIF spec. This may be useful
-to users who would like to generate gifs from code, or include the
+This is a low-level implementation of the GIF spec. It may be useful
+to those who would like to generate gifs from code or include the
 ability to render gifs from an application. It does not include any
 additional features, such as image format decoding, or drawing or
 compositing tools.
+
+The Netcape Looping Application Extension is included.
 
 The Plain Text Extension is not implemented.
 
 ### Usage
 
-See `api.cljc` for an example, user-friendly interface built-on the
+See `api.cljc` for an example user-friendly interface built-on the
 low-level implementation, and `examples.cljc` for examples of creating
 gifs using that API.
 
@@ -28,12 +30,13 @@ gifs using that API.
 ### To do
 
 * Optimize gifs.
-* Options for handling color palettes.
+* Add options for handling color palettes.
+* Optimize code.
 
 ### Implementation
 
 The gif spec is encoded as a set of data structures interpreted as a
-schema. Several functions are provided to implement necessary
+schema. Several functions are provided which implement necessary
 algorithms, such as the LZW compression algorithm.
 
 Default values are provided for some fields. No distinction is made
@@ -77,7 +80,7 @@ or one of `:?`, `:+`, `:*` with the usual meanings.
 
 ## Thanks
 
-Thanks to Zach Beane for [Skippy](xach.com/lisp/skippy/), which I referenced heavily while writing this library.
+Thanks to Zach Beane for [Skippy](http://xach.com/lisp/skippy/), which I referenced heavily while writing this library.
 
 ## License
 
