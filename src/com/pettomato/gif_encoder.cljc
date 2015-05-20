@@ -155,7 +155,7 @@
     (case type'
       bit      (list [count' value])
       byte     (cond
-                 (string? value)     (for [char value] [8 (int char)])
+                 (string? value)     (for [char value] [8 (#?(:clj int :cljs .charCodeAt) char)])
                  (integer? value)    (list [(* count' 8) value])
                  (sequential? value) (for [item value] [8 item]))
       unsigned (list [(* count' 8 2) value])

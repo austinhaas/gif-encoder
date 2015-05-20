@@ -1,7 +1,7 @@
 (ns com.pettomato.gif-encoder.api
   (:require
    [com.pettomato.gif-encoder.api
-    :refer [mk-image mk-frame mk-gif set-pixels scale-image gif->binary]]))
+    :refer [mk-image mk-frame mk-gif set-pixels scale-image gif->bytes]]))
 
 (defn write-bytes [f byte-arr]
   (with-open [w (clojure.java.io/output-stream f)]
@@ -24,7 +24,8 @@
                        []
                        (for [i (range (/ size 2))] (take (/ size 2) (drop i colors))))]
     (->> (mk-gif size size frames nil)
-         gif->binary
+         gif->bytes
+         byte-array
          (write-bytes file))))
 
 (defn lazy-game-of-life [w h seed]
@@ -64,7 +65,8 @@
                     (take iterations)
                     (map render))]
     (->> (mk-gif (* w scale) (* h scale) frames nil)
-         gif->binary
+         gif->bytes
+         byte-array
          (write-bytes file))))
 
 ;; (cycling-boxes "cycling-boxes.gif" 128)
